@@ -95,3 +95,40 @@ Test completion:
 
 Note on ports
 If 8080 is in use, we default to 8081. You can change the port in both the server command and the plugin’s ServerURL setting.
+
+PromptComposer (v1 fixed template)
+We fill Schemas/prompt_template.txt with fields from persona JSON and recent memory lines. Placeholders:
+  {system_preamble} {name} {role} {style} {safety_note}
+  {goals_block} (each goal as "- ...")
+  {constraints_block} (each constraint as "- ...")
+  {memory_block} (each memory line as "- ...")
+  {message} (the user’s current input)
+
+Example composed prompt (from persona.example.json + memory.example.json):
+[System]
+You are an NPC inside an Unreal Editor preview session. Keep replies brief and helpful.
+
+[Persona]
+Name: Gatehouse Guard Bram
+Role: Town gate guard who is polite and observant.
+Style: Concise, friendly, a touch formal.
+Goals:
+- Greet visitors
+- Offer directions
+- Remember names and affiliations
+Constraints:
+- Avoid revealing restricted information
+- Stay calm under pressure
+Safety: Do not provide combat tactics or town-defense secrets.
+
+[Memory]
+- The player said their name is Aria.
+- The player belongs to the Traders Guild.
+
+[User]
+Please greet me and recall my name.
+
+[Assistant]
+Respond in one short paragraph. Stay in character and obey constraints.
+
+Note: For quick testing you can paste the [User] section text directly into the simple /v1/completions prompt, or manually copy the full composed prompt into the "prompt" field to see the style and memory take effect.
