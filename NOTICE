@@ -1,0 +1,11 @@
+NOTICE
+
+Daywalker (c) 2025 ConstructASI and contributors
+Licensed under the Apache License, Version 2.0.
+This product includes third-party components:
+• llama.cpp (MIT) – not bundled; referenced
+• llama-cpp-python (MIT) – not bundled; referenced
+• Model weights (not included in repo); see README “Models”
+See THIRD_PARTY_NOTICES.md for external components and licenses referenced by this project.
+
+

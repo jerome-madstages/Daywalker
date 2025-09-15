@@ -1,0 +1,12 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "0.1.0-alpha",
+  "FriendlyName": "Daywalker",
+  "Description": "Local LLM bridge for UE5.",
+  "Category": "AI",
+  "EnabledByDefault": true,
+  "Modules": [
+    { "Name": "Daywalker", "Type": "Runtime", "LoadingPhase": "Default" }
+  ]
+}

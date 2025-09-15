@@ -1,0 +1,10 @@
+/models/
+/Media/
+*.mp4
+*.mov
+.venv/
+__pycache__/
+*.sln
+Binaries/
+Intermediate/
+Saved/
