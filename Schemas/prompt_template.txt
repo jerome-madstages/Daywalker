@@ -1,0 +1,21 @@
+[System]
+{system_preamble}
+
+[Persona]
+Name: {name}
+Role: {role}
+Style: {style}
+Goals:
+{goals_block}
+Constraints:
+{constraints_block}
+Safety: {safety_note}
+
+[Memory]
+{memory_block}
+
+[User]
+{message}
+
+[Assistant]
+Respond in one short paragraph. Stay in character and obey constraints.

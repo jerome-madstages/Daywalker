@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Daywalker Persona",
+  "type": "object",
+  "required": ["name","role","style","goals","constraints","system_preamble","memory_policy"],
+  "properties": {
+    "name": { "type": "string" },
+    "role": { "type": "string" },
+    "style": { "type": "string" },
+    "goals": { "type": "array", "items": { "type": "string" } },
+    "constraints": { "type": "array", "items": { "type": "string" } },
+    "safety_note": { "type": "string" },
+    "system_preamble": { "type": "string" },
+    "memory_policy": {
+      "type": "object",
+      "required": ["max_items","max_chars"],
+      "properties": {
+        "max_items": { "type": "integer", "minimum": 0 },
+        "max_chars": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
