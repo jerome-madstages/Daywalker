@@ -36,10 +36,10 @@ python -m llama_cpp.server
 --n_ctx 4096
 
 Health check
-curl -s http://127.0.0.1:8080/health
+curl -s http://127.0.0.1:8081/health
 
 Test a completion
-curl -s http://127.0.0.1:8080/v1/completions
+curl -s http://127.0.0.1:8081/v1/completions
  -H "Content-Type: application/json" -d '{
 "model": "local",
 "prompt": "Say hello in one short sentence.",
@@ -76,11 +76,22 @@ Apache-2.0. See NOTICE and THIRD_PARTY_NOTICES.md.
 
 Proof: local runner working
 Command:
-  curl -s http://127.0.0.1:8080/v1/models
+  curl -s http://127.0.0.1:8081/v1/models
 Example output:
   {"object":"list","data":[{"id":"./models/mistral-7b-instruct-v0.1.Q4_0.gguf","object":"model","owned_by":"me","permissions":[]}]}
 
 Command:
-  curl -s http://127.0.0.1:8080/v1/completions -H "Content-Type: application/json" -d '{"model":"local","prompt":"Say hello in one short sentence.","max_tokens":64}'
+  curl -s http://127.0.0.1:8081/v1/completions -H "Content-Type: application/json" -d '{"model":"local","prompt":"Say hello in one short sentence.","max_tokens":64}'
 Example output:
   {"id":"cmpl-...","object":"text_completion","choices":[{"text":" How are you today?","index":0,"finish_reason":"stop"}]}
+
+Known good one-liners (port 8081)
+Start server:
+  python -m llama_cpp.server --model ./models/mistral-7b-instruct-v0.1.Q4_0.gguf --host 127.0.0.1 --port 8081 --n_ctx 4096
+List models:
+  curl -s http://127.0.0.1:8081/v1/models
+Test completion:
+  curl -s http://127.0.0.1:8081/v1/completions -H "Content-Type: application/json" -d '{"model":"local","prompt":"Say hello in one short sentence.","max_tokens":32}'
+
+Note on ports
+If 8080 is in use, we default to 8081. You can change the port in both the server command and the plugin’s ServerURL setting.
