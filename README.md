@@ -73,3 +73,14 @@ Apache-2.0. See NOTICE and THIRD_PARTY_NOTICES.md.
 
 
 
+
+Proof: local runner working
+Command:
+  curl -s http://127.0.0.1:8080/v1/models
+Example output:
+  {"object":"list","data":[{"id":"./models/mistral-7b-instruct-v0.1.Q4_0.gguf","object":"model","owned_by":"me","permissions":[]}]}
+
+Command:
+  curl -s http://127.0.0.1:8080/v1/completions -H "Content-Type: application/json" -d '{"model":"local","prompt":"Say hello in one short sentence.","max_tokens":64}'
+Example output:
+  {"id":"cmpl-...","object":"text_completion","choices":[{"text":" How are you today?","index":0,"finish_reason":"stop"}]}
