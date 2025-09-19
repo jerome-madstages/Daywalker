@@ -1,0 +1,59 @@
+﻿{
+    "name":  "Daywalker_v0.1",
+    "created_utc":  "2025-09-18T23:33:29Z",
+    "media":  {
+                  "screenshots":  [
+                                      "Guard.png",
+                                      "Healer.png",
+                                      "Merchant.png"
+                                  ],
+                  "clips":  "Daywalker_Demo_Clip_v1.mp4"
+              },
+    "files":  [
+                  {
+                      "path":  "README.txt",
+                      "bytes":  355,
+                      "sha256":  "83e2e8ad4a87b0565c1700267b65c57af773f7fdc95dbb943f85ffb0d9e0df1d"
+                  },
+                  {
+                      "path":  "Media/Clips/Daywalker_Demo_Clip_v1.mp4",
+                      "bytes":  7854856,
+                      "sha256":  "aafb222f2ee203d644c0d7dc27b03a4df6be9abb3d6ede5624a92de245ea413b"
+                  },
+                  {
+                      "path":  "Media/Screenshots/Guard.png",
+                      "bytes":  6862193,
+                      "sha256":  "0ec4c7b2bb9497742941f060892b33920cdb5007729a0dca69e006ccbbcd9339"
+                  },
+                  {
+                      "path":  "Media/Screenshots/Healer.png",
+                      "bytes":  6899176,
+                      "sha256":  "72e7028909766087c0f8f0d25526d15d5d4abc508f6dc878f3e7f83215b5b26a"
+                  },
+                  {
+                      "path":  "Media/Screenshots/Merchant.png",
+                      "bytes":  7211472,
+                      "sha256":  "bff2613207494edbad068b627a214bf8b9b465708c2876fc4f9ec37dc3ca9d82"
+                  },
+                  {
+                      "path":  "Notes/Demo_Prompts.txt",
+                      "bytes":  175,
+                      "sha256":  "540abd900c44435a9168780cdef37a221b338c0532171106579e2b65d14ff6e5"
+                  },
+                  {
+                      "path":  "Scripts/daywalker_compose.py",
+                      "bytes":  3267,
+                      "sha256":  "cac30ab7a3bf53f31152226c74fe41aec983358680de56bdb1aacb36999ae1b2"
+                  },
+                  {
+                      "path":  "Scripts/dw_proxy.py",
+                      "bytes":  1710,
+                      "sha256":  "870d43d1fa1cf45102b80c3abb710f008b407a67acaefe9bb5734f02877060bf"
+                  },
+                  {
+                      "path":  "Scripts/dw_query.py",
+                      "bytes":  561,
+                      "sha256":  "0ba840fd594453b53d026a7a25d406498ad7fb696c2c3c1c1055a6e1a47c9082"
+                  }
+              ]
+}

@@ -1,0 +1,3 @@
+﻿Merchant: Offer me something new.
+Guard: What pass does the player have?   (seed: "Player has a bronze pass.")
+Healer: What should I carry before heading into the forest?
