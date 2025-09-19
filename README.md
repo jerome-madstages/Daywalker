@@ -1,134 +1,15 @@
-README
+﻿# Daywalker
 
-Daywalker (v1) — UE5 local NPC prototype plug-in
+Prototype v0.1
 
-What this is
-Daywalker is an open-source Unreal Engine 5 developer plug-in that prototypes conversational NPCs locally and offline. v1 exposes a single Blueprint-callable node that calls a small local model runner. A persona JSON and a fixed PromptComposer template shape behavior. A simple JSON memory stores the last N lines for basic recall.
+• Latest release: https://github.com/jerome-madstages/Daywalker/releases/tag/v0.1
+• Direct asset (zip): https://github.com/jerome-madstages/Daywalker/releases/download/v0.1/Daywalker_v0.1.zip
 
-Scope for v1
-• UE5 plug-in shell (C++ with one Blueprint node: QueryLLM)
-• Local runner (llama-cpp-python server; buffered output)
-• Persona.json + fixed PromptComposer template
-• Memory.json last-N log
-• Small demo map with two NPCs
+Quick start (Windows):
+1) Unzip Daywalker_v0.1.zip.
+2) Double-click Start-Daywalker-Demo to launch runner/proxy and open UE.
+3) Use Start-Daywalker-Runner if you only need the local LLM service.
 
-Models
-We do not ship weights in the repo.
-Tested model: Mistral 7B Instruct, GGUF, q4_0
-Example local file name: mistral-7b-instruct-v0.1.Q4_0.gguf
-Local placement (not committed): ./models/mistral-7b-instruct-v0.1.Q4_0.gguf
-
-Local runner (first test)
-Prerequisites: Python 3.10+
-
-Create a virtual environment
-python -m venv .venv
-source .venv/bin/activate # Windows: .venv\Scripts\activate
-
-Install the server
-pip install "llama-cpp-python[server]"
-
-Start the server (adjust the model path if different)
-python -m llama_cpp.server
---model ./models/mistral-7b-instruct-v0.1.Q4_0.gguf
---host 127.0.0.1
---port 8080
---n_ctx 4096
-
-Health check
-curl -s http://127.0.0.1:8081/health
-
-Test a completion
-curl -s http://127.0.0.1:8081/v1/completions
- -H "Content-Type: application/json" -d '{
-"model": "local",
-"prompt": "Say hello in one short sentence.",
-"max_tokens": 64
-}'
-
-UE5 plug-in expectation for v1
-• Editor setting for runner host/port and model name
-• One Blueprint node: QueryLLM(message) → string reply in PIE
-
-Repository layout (initial)
-• /Plugin … UE5 C++ plug-in (coming in next commit)
-• /Runner … we use llama-cpp-python server; see commands above
-• /Schemas … persona.schema.json, persona.example.json, memory.example.json
-• /Samples/DemoMap … Guard.persona.json, Merchant.persona.json
-• /Scripts … download_model.sh (instructions only)
-• /Media … screenshots and a short demo video (not committed if large)
-
-Git hygiene
-• Do not commit model weights or large media
-• Ensure /models/ is in .gitignore
-
-License
-Apache-2.0. See NOTICE and THIRD_PARTY_NOTICES.md.
-
-
-
-
-
-
-
-
-
-
-Proof: local runner working
-Command:
-  curl -s http://127.0.0.1:8081/v1/models
-Example output:
-  {"object":"list","data":[{"id":"./models/mistral-7b-instruct-v0.1.Q4_0.gguf","object":"model","owned_by":"me","permissions":[]}]}
-
-Command:
-  curl -s http://127.0.0.1:8081/v1/completions -H "Content-Type: application/json" -d '{"model":"local","prompt":"Say hello in one short sentence.","max_tokens":64}'
-Example output:
-  {"id":"cmpl-...","object":"text_completion","choices":[{"text":" How are you today?","index":0,"finish_reason":"stop"}]}
-
-Known good one-liners (port 8081)
-Start server:
-  python -m llama_cpp.server --model ./models/mistral-7b-instruct-v0.1.Q4_0.gguf --host 127.0.0.1 --port 8081 --n_ctx 4096
-List models:
-  curl -s http://127.0.0.1:8081/v1/models
-Test completion:
-  curl -s http://127.0.0.1:8081/v1/completions -H "Content-Type: application/json" -d '{"model":"local","prompt":"Say hello in one short sentence.","max_tokens":32}'
-
-Note on ports
-If 8080 is in use, we default to 8081. You can change the port in both the server command and the plugin’s ServerURL setting.
-
-PromptComposer (v1 fixed template)
-We fill Schemas/prompt_template.txt with fields from persona JSON and recent memory lines. Placeholders:
-  {system_preamble} {name} {role} {style} {safety_note}
-  {goals_block} (each goal as "- ...")
-  {constraints_block} (each constraint as "- ...")
-  {memory_block} (each memory line as "- ...")
-  {message} (the user’s current input)
-
-Example composed prompt (from persona.example.json + memory.example.json):
-[System]
-You are an NPC inside an Unreal Editor preview session. Keep replies brief and helpful.
-
-[Persona]
-Name: Gatehouse Guard Bram
-Role: Town gate guard who is polite and observant.
-Style: Concise, friendly, a touch formal.
-Goals:
-- Greet visitors
-- Offer directions
-- Remember names and affiliations
-Constraints:
-- Avoid revealing restricted information
-- Stay calm under pressure
-Safety: Do not provide combat tactics or town-defense secrets.
-
-[Memory]
-- The player said their name is Aria.
-- The player belongs to the Traders Guild.
-
-[User]
-Please greet me and recall my name.
-
-[Assistant]
-Respond in one short paragraph. Stay in character and obey constraints.
-
-Note: For quick testing you can paste the [User] section text directly into the simple /v1/completions prompt, or manually copy the full composed prompt into the "prompt" field to see the style and memory take effect.
+Notes:
+• This build uses a local TinyLlama .gguf via llama_cpp.server for the demo.
+• Screenshots and a short capture clip are included in Media/.
