@@ -1,0 +1,22 @@
+﻿name: Bug report
+description: File a bug report for Daywalker
+labels: [bug]
+body:
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      description: Windows version, Python version, Unreal version
+      placeholder: e.g., Windows 11 23H2, Python 3.10.11, UE 5.5.3
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Exact commands and actions
+      placeholder: 1) start runner ... 2) start proxy ... 3) in UE Python console ...
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Runner/proxy output and UE console snippets
+      render: shell

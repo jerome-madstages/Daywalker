@@ -1,0 +1,16 @@
+﻿name: Feature request
+description: Suggest an idea for Daywalker
+labels: [enhancement]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Problem to solve
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+  - type: textarea
+    id: details
+    attributes:
+      label: Additional context

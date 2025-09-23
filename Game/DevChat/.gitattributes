@@ -1,0 +1,13 @@
+﻿* text=auto eol=lf
+
+# Binary Unreal assets
+*.uasset binary
+*.umap   binary
+
+# Windows scripts
+*.bat text eol=crlf
+
+# Code and docs
+*.py  text eol=lf
+*.ps1 text eol=lf
+*.md  text eol=lf
