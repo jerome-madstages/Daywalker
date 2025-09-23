@@ -50,3 +50,8 @@ Notes
 ![Proxy status](Media/daywalker-proxy.png)
 ![Runner](Media/daywalker-runner.png)
 ![Desktop overview](Media/daywalker-desktop.png)
+
+## Release
+
+Snapshot: [v0.1.1-devchat](https://github.com/jerome-madstages/Daywalker/releases/tag/v0.1.1-devchat)  
+All releases: https://github.com/jerome-madstages/Daywalker/releases
